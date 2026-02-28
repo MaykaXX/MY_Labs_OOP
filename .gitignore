@@ -1,1 +1,12 @@
-Режим вывода команд на экран (ECHO) включен.
+# Build files
+*.exe
+*.o
+*.obj
+*.out
+
+# Visual Studio
+.vs/
+*.log
+
+# OS
+Thumbs.db
