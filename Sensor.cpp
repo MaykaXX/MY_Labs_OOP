@@ -1,4 +1,4 @@
-#include "cmake-build-debug/Sensor.h"
+#include "Sensor.h"
 #include <iostream>
 #include <ostream>
 #include <vector>

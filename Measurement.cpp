@@ -1,4 +1,4 @@
-#include "cmake-build-debug/Measurement.h"
+#include "Measurement.h"
 #include <iostream>
 #include <ostream>
 #include <vector>
