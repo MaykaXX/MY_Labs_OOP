@@ -4,6 +4,10 @@
 *.obj
 *.out
 
+cmake-build-debug/
+.idea/
+.git/
+
 # Visual Studio
 .vs/
 *.log
