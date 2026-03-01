@@ -1,6 +1,7 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
+#include "../termcolor/termcolor.hpp"
 
 #include "WeatherStation.h"
 
@@ -14,7 +15,7 @@ int main() {
 
     do {
         ///////MENU///////
-        std::cout << "\n ***Mayka's weather station Menu***\n";
+        std::cout << termcolor::magenta<<"\n ***Mayka's weather station Menu***\n"<<termcolor::reset;
         std::cout << "1. Add Sensor\n";
         std::cout << "2. Show Sensors\n";
         std::cout << "3. Collect Data\n";
@@ -22,7 +23,7 @@ int main() {
         std::cout << "5. Calculate Average by Type\n";
         std::cout << "6. Exit\n";
         //////////////////
-        std::cout << "Choose an option: ";
+        std::cout << termcolor::bright_cyan <<"Choose an option: " << termcolor::reset;
         std::cin >> choice;
 
         switch (choice) {

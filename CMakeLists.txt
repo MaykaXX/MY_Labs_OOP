@@ -9,4 +9,6 @@ add_executable(main Lab_2/main.cpp
         Lab_2/Measurement.cpp
         Lab_2/Measurement.h
         Lab_2/WeatherStation.cpp
-        Lab_2/WeatherStation.h)
+        Lab_2/WeatherStation.h
+        termcolor/termcolor.hpp
+)

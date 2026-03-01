@@ -27,7 +27,7 @@ void WeatherStation::collest_data() {
 
 void WeatherStation::show_Sensors() {
     for (auto &sensor: sensors) {
-        std::cout << sensor.get_id() << std::endl;
+        std::cout << sensor.get_id() << ". " << sensor.get_type() << std::endl;
     }
 };
 

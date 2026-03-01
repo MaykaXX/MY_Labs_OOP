@@ -7,11 +7,12 @@
 Sensor::Sensor() : Sensor(0, "None", 0.0) {
 };
 
+Sensor::Sensor(int id) :Sensor(id, "Temperature", 0.0) {
+};
+
 Sensor::Sensor(int id, std::string type, double lastvalue) : id(id), type(type), lastvalue(lastvalue) {
 };
 
-Sensor::Sensor(int id) : id(id), type("Temperature"), lastvalue(0.0) {
-};
 
 Sensor::~Sensor() {
     // std::cout << "Sensor destroyed\n";
