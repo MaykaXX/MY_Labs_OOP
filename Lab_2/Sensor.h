@@ -15,7 +15,9 @@ public:
 
     Sensor(int id, std::string type, double lastvalue);
 
-    double read_value() const;
+    ~Sensor();
+
+    double read_value();
 
     int get_id() const;
 

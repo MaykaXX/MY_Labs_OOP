@@ -9,19 +9,25 @@
 class WeatherStation {
 private:
     std::string name;
-    std::vector<Sensor>;
-    std::vector<Measurement>;
+    std::vector<Sensor> sensors;
+    std::vector<Measurement> measurements;
 
 public:
-    void add_Sensor();
+    WeatherStation();
 
-    Measurement collest_data();
+    WeatherStation(std::string name);
+
+    ~WeatherStation();
+
+    void add_Sensor(int id, std::string type);
+
+    void collest_data();
 
     void show_Sensors();
 
     void show_history();
 
-    double calculate_average();
+    double calculate_average(const std::string type);
 };
 
 

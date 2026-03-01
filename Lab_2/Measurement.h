@@ -2,6 +2,8 @@
 #define UNTITLED_MEASUREMENT_H
 #include <string>
 
+#include "Sensor.h"
+
 class Measurement {
 private:
     std::string data;
@@ -15,11 +17,13 @@ public:
 
     Measurement(std::string data, double value, int sensor_id);
 
+    ~Measurement();
+
     void print() const;
 
-    std::string get_data() const;
+    double getValue() const;
 
-    int get_sensor_id() const;
+    int getSensorId() const;
 };
 
 
