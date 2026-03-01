@@ -3,7 +3,6 @@
 #include <ostream>
 #include <vector>
 #include <string>
-#include <ctime>
 
 Sensor::Sensor() : Sensor(0, "None", 0.0) {
 };

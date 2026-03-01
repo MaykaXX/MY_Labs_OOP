@@ -1,5 +1,4 @@
 #include "Measurement.h"
-#include "Sensor.h"
 #include <iostream>
 #include <ostream>
 #include <vector>
