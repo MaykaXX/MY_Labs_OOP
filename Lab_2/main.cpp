@@ -1,29 +1,26 @@
 #include <iostream>
-#include <thread>
-#include <chrono>
+#include "WeatherStation.h"
 #include "../termcolor/termcolor.hpp"
 
-#include "WeatherStation.h"
-
-
-int Sleep(int _cpp_par_);
 
 int main() {
     srand(time(NULL));
+    /*const*/
     WeatherStation wstation("Station A");
     int choice;
 
     do {
         ///////MENU///////
-        std::cout << termcolor::magenta<<"\n ***Mayka's weather station Menu***\n"<<termcolor::reset;
+        std::cout << termcolor::magenta << "\n ***Mayka's weather station Menu***\n" << termcolor::reset;
         std::cout << "1. Add Sensor\n";
         std::cout << "2. Show Sensors\n";
-        std::cout << "3. Collect Data\n";
-        std::cout << "4. Show History\n";
-        std::cout << "5. Calculate Average by Type\n";
-        std::cout << "6. Exit\n";
+        std::cout << "3. Sensor Count\n";
+        std::cout << "4. Collect Data\n";
+        std::cout << "5. Show History\n";
+        std::cout << "6. Calculate Average by Type\n";
+        std::cout << "7. Exit\n";
         //////////////////
-        std::cout << termcolor::bright_cyan <<"Choose an option: " << termcolor::reset;
+        std::cout << termcolor::bright_cyan << "Choose an option: " << termcolor::reset;
         std::cin >> choice;
 
         switch (choice) {
@@ -41,17 +38,20 @@ int main() {
                 wstation.show_Sensors();
                 break;
             }
+
             case 3: {
+                wstation.show_sensor_count();
+            }
+            case 4: {
                 wstation.collest_data();
-                std::this_thread::sleep_for(std::chrono::milliseconds(1000));
                 std::cout << "Data collected!\n";
                 break;
             }
-            case 4: {
+            case 5: {
                 wstation.show_history();
                 break;
             }
-            case 5: {
+            case 6: {
                 std::string type;
                 std::cout << "Enter sensor type to calculate average: ";
                 std::cin >> type;
@@ -60,6 +60,6 @@ int main() {
                 break;
             }
         }
-    } while (choice != 6);
+    } while (choice != 7);
     return 0;
 }

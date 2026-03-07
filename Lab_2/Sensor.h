@@ -7,6 +7,7 @@ private:
     int id;
     std::string type;
     double lastvalue;
+    static int sensor_count;
 
 public:
     Sensor();
@@ -24,6 +25,8 @@ public:
     std::string get_type() const;
 
     double get_lastvalue() const;
+
+    static int get_sensor_count();
 };
 
 

@@ -2,7 +2,6 @@
 #define UNTITLED_WEATHERSTATION_H
 #include <string>
 #include <vector>
-
 #include "Measurement.h"
 #include "Sensor.h"
 
@@ -23,11 +22,13 @@ public:
 
     void collest_data();
 
-    void show_Sensors();
+    void show_Sensors() const;
 
-    void show_history();
+    void show_history() const;
 
-    double calculate_average(const std::string type);
+    double calculate_average(const std::string type) const;
+
+    void show_sensor_count() const;
 };
 
 

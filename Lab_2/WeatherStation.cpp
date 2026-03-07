@@ -1,6 +1,9 @@
 #include "WeatherStation.h"
+#include "Sensor.h"
 #include <iostream>
 #include <string>
+
+#include "../termcolor/termcolor.hpp"
 
 WeatherStation::WeatherStation() : WeatherStation("Default station") {
 };
@@ -25,19 +28,19 @@ void WeatherStation::collest_data() {
     }
 };
 
-void WeatherStation::show_Sensors() {
+void WeatherStation::show_Sensors() const {
     for (auto &sensor: sensors) {
         std::cout << sensor.get_id() << ". " << sensor.get_type() << std::endl;
     }
 };
 
-void WeatherStation::show_history() {
+void WeatherStation::show_history() const{
     for (auto &measurement: measurements) {
         measurement.print();
     }
 };
 
-double WeatherStation::calculate_average(const std::string type) {
+double WeatherStation::calculate_average(const std::string type) const{
     double sum = 0;
     int count = 0;
 
@@ -57,4 +60,8 @@ double WeatherStation::calculate_average(const std::string type) {
     }
 
     return sum / count;
+
 };
+void WeatherStation::show_sensor_count() const {
+    std::cout << termcolor::bright_green <<"Sensor Count:" << Sensor::get_sensor_count() << std::endl;
+}

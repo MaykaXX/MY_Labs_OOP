@@ -1,16 +1,21 @@
 #include "Sensor.h"
 #include <iostream>
 #include <ostream>
-#include <vector>
 #include <string>
 
+static int get_sensor_count();
+
+
 Sensor::Sensor() : Sensor(0, "None", 0.0) {
+    sensor_count++;
 };
 
-Sensor::Sensor(int id) :Sensor(id, "Temperature", 0.0) {
+Sensor::Sensor(int id) : Sensor(id, "Temperature", 0.0) {
+    sensor_count++;
 };
 
 Sensor::Sensor(int id, std::string type, double lastvalue) : id(id), type(type), lastvalue(lastvalue) {
+    sensor_count++;
 };
 
 
@@ -35,5 +40,9 @@ std::string Sensor::get_type() const {
 double Sensor::get_lastvalue() const {
     return lastvalue;
 };
+
+int Sensor::get_sensor_count() {
+    return sensor_count;
+}
 
 

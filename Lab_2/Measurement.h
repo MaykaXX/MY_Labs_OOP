@@ -2,7 +2,6 @@
 #define UNTITLED_MEASUREMENT_H
 #include <string>
 
-#include "Sensor.h"
 
 class Measurement {
 private:
@@ -17,7 +16,12 @@ public:
 
     Measurement(std::string data, double value, int sensor_id);
 
+    Measurement(const Measurement&other);
+
+    Measurement(Measurement&&other);
+
     ~Measurement();
+
 
     void print() const;
 
