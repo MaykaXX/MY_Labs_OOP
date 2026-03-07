@@ -20,7 +20,7 @@ public:
 
     void add_Sensor(int id, std::string type);
 
-    void collest_data();
+    void collect_data();
 
     void show_Sensors() const;
 
@@ -29,6 +29,8 @@ public:
     double calculate_average(const std::string type) const;
 
     void show_sensor_count() const;
+
+    void operator--();
 };
 
 

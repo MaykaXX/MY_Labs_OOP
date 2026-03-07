@@ -20,6 +20,8 @@ public:
 
     double read_value();
 
+    static void decrement_count_sensors();
+
     int get_id() const;
 
     std::string get_type() const;

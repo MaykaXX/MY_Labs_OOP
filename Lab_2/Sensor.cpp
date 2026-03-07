@@ -3,7 +3,7 @@
 #include <ostream>
 #include <string>
 
-static int get_sensor_count();
+int Sensor::sensor_count = 0;
 
 
 Sensor::Sensor() : Sensor(0, "None", 0.0) {
@@ -28,6 +28,11 @@ double Sensor::read_value() {
     //std::cout << lastvalue << std::endl;
     return lastvalue;
 };
+
+void Sensor::decrement_count_sensors() {
+    if(sensor_count>0)
+        sensor_count--;
+}
 
 int Sensor::get_id() const {
     return id;

@@ -7,6 +7,9 @@ int main() {
     srand(time(NULL));
     /*const*/
     WeatherStation wstation("Station A");
+    WeatherStation wstation2(wstation);
+    WeatherStation wstation3(std::move(wstation2));
+
     int choice;
 
     do {
@@ -18,7 +21,8 @@ int main() {
         std::cout << "4. Collect Data\n";
         std::cout << "5. Show History\n";
         std::cout << "6. Calculate Average by Type\n";
-        std::cout << "7. Exit\n";
+        std::cout << "7. Delete last Sensor\n";
+        std::cout << "8. Exit\n";
         //////////////////
         std::cout << termcolor::bright_cyan << "Choose an option: " << termcolor::reset;
         std::cin >> choice;
@@ -41,9 +45,10 @@ int main() {
 
             case 3: {
                 wstation.show_sensor_count();
+                break;
             }
             case 4: {
-                wstation.collest_data();
+                wstation.collect_data();
                 std::cout << "Data collected!\n";
                 break;
             }
@@ -59,7 +64,12 @@ int main() {
                 std::cout << "Average for type " << type << ": " << average << "\n";
                 break;
             }
+            case 7: {
+                --wstation;
+                std::cout << termcolor::bright_green << "Sensor was deleted!1" << termcolor::reset;
+                break;
+            }
         }
-    } while (choice != 7);
+    } while (choice != 8);
     return 0;
 }

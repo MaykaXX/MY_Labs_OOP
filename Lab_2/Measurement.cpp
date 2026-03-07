@@ -1,16 +1,16 @@
 #include "Measurement.h"
-#include <iostream>
 #include <ostream>
 #include <string>
 
-Measurement::Measurement() : Measurement("00.00.0000", 0.0, 0) {
+Measurement::Measurement() : Measurement("00.00.0000", 0.0, 0, "none") {
 };
 
-Measurement::Measurement(double value) : Measurement("00.00.0000", value, 0) {
+Measurement::Measurement(double value, std::string type_sensor) : Measurement("00.00.0000", value, 0, type_sensor) {
 };
 
-Measurement::Measurement(std::string data, double value, int sensor_id) : data(data), value(value),
-                                                                          sensor_id(sensor_id) {
+Measurement::Measurement(std::string data, double value, int sensor_id, std::string type_sensor) : data(data),
+    value(value),
+    sensor_id(sensor_id), type_sensor(type_sensor) {
 };
 
 
@@ -18,21 +18,28 @@ Measurement::Measurement(const Measurement &other) {
     data = other.data;
     value = other.value;
     sensor_id = other.sensor_id;
+    type_sensor = other.type_sensor;
 }
 
-Measurement::Measurement(Measurement &&other) {
+Measurement::Measurement(Measurement &&other) noexcept {
     data = std::move(other.data);
     value = other.value;
     sensor_id = other.sensor_id;
+    type_sensor = std::move(other.type_sensor);
+}
+
+std::ostream &operator<<(std::ostream &out, const Measurement &measurement) {
+    out<< "Info: " << measurement.data << ", " << measurement.value << ", " << measurement.type_sensor << ", " << measurement.sensor_id << std::endl;
+    return out;
 }
 
 Measurement::~Measurement() {
     //std::cout << "Measurement destructor called." << std::endl;
 }
 
-void Measurement::print() const {
-    std::cout << "Info: " << this->data << ", " << this->value << ", " << this->sensor_id << std::endl;
-};
+// void Measurement::print() const {
+//     std::cout << "Info: " << this->data << ", " << this->value << ", " << this->sensor_id << std::endl;
+// };
 
 double Measurement::getValue() const {
     return value;
