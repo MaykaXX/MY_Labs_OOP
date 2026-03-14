@@ -13,24 +13,28 @@ private:
 public:
     Measurement();
 
-    Measurement(double value, std::string type_sensor);
+    Measurement(double value, int sensor_id, std::string type_sensor);
 
-    Measurement(std::string data, double value, int sensor_id, std::string type_sensor);
+    Measurement(std::string data, double value, int sensor_id, std::string);
 
     Measurement(const Measurement &other);
 
     Measurement(Measurement &&other) noexcept;
 
-    friend std::ostream &operator<<(std::ostream &cout, const Measurement &measurement);
+    Measurement& operator=(const Measurement &other);
 
     ~Measurement();
 
 
     // void print() const;
 
+    friend std::ostream &operator<<(std::ostream &cout, const Measurement &measurement);
+
     double getValue() const;
 
     int getSensorId() const;
+
+    std::string getTypeSensor() const;
 };
 
 

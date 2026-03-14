@@ -2,14 +2,12 @@
 #define UNTITLED_WEATHERSTATION_H
 #include <string>
 #include <vector>
-#include "Measurement.h"
 #include "Sensor.h"
 
 class WeatherStation {
 private:
     std::string name;
-    std::vector<Sensor> sensors;
-    std::vector<Measurement> measurements;
+    std::vector<Sensor*> sensors;
 
 public:
     WeatherStation();
@@ -18,19 +16,18 @@ public:
 
     ~WeatherStation();
 
-    void add_Sensor(int id, std::string type);
+    void add_temperature_sensor(int id);
+    void add_humidity_sensor(int id);
+    void add_pressure_sensor(int id);
 
     void collect_data();
-
     void show_Sensors() const;
-
     void show_history() const;
-
     double calculate_average(const std::string type) const;
-
     void show_sensor_count() const;
 
     void operator--();
+    void operator-(int id);
 };
 
 
