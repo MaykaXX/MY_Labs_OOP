@@ -7,7 +7,7 @@
 class WeatherStation {
 private:
     std::string name;
-    std::vector<Sensor*> sensors;
+    std::vector<Sensor *> sensors;
 
 public:
     WeatherStation();
@@ -17,16 +17,19 @@ public:
     ~WeatherStation();
 
     void add_temperature_sensor(int id);
+
     void add_humidity_sensor(int id);
+
     void add_pressure_sensor(int id);
 
-    void collect_data();
+    void collect_data(std::string &date);
     void show_Sensors() const;
     void show_history() const;
     double calculate_average(const std::string type) const;
     void show_sensor_count() const;
 
     void operator--();
+
     void operator-(int id);
 };
 

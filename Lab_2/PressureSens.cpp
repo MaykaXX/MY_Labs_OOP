@@ -7,11 +7,11 @@
 PressureSens::PressureSens(int id) {
     this->id = id;
     type = "Pressure";
-    lastvalue = 0;
+    unit = "hPa";
 }
 
-double PressureSens::read_value() {
+double PressureSens::read_value(std::string &date) {
     lastvalue = 950 + rand() % 101;
-    history.emplace_back(lastvalue, id , type);
+    addMeasurement(lastvalue, date);
     return lastvalue;
 }

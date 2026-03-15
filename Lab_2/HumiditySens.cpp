@@ -7,11 +7,11 @@
 HumiditySens::HumiditySens(int id) {
     this->id = id;
     type = "Humidity";
-    lastvalue = 0;
+    unit = "%";
 }
 
-double HumiditySens::read_value() {
+double HumiditySens::read_value(std::string &date) {
     lastvalue = rand() % 101;
-    history.emplace_back(lastvalue, id , type);
+    addMeasurement(lastvalue, date);
     return lastvalue;
 }

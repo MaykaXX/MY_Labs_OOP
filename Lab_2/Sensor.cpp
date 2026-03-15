@@ -7,7 +7,6 @@ int Sensor::sensor_count = 0;
 
 
 Sensor::Sensor() : Sensor(0, "None", 0.0) {
-    sensor_count++;
 };
 
 // Sensor::Sensor(int id) : Sensor(id, "Temperature", 0.0) {
@@ -15,27 +14,27 @@ Sensor::Sensor() : Sensor(0, "None", 0.0) {
 // };
 
 
+Sensor::Sensor(int id, std::string type) : Sensor(id, type, 0.0) {}
+
 Sensor::Sensor(int id, std::string type, double lastvalue) : id(id), type(type), lastvalue(lastvalue) {
     sensor_count++;
 };
 
-Sensor::Sensor(const Sensor& other):
-id(other.id),
-type(other.type),
-lastvalue(other.lastvalue),
-history(other.history) {sensor_count++;}
+Sensor::Sensor(const Sensor &other) : id(other.id),
+                                      type(other.type),
+                                      lastvalue(other.lastvalue),
+                                      history(other.history) { sensor_count++; }
 
 
-Sensor::Sensor(Sensor &&other) noexcept :
-id(other.id),
-type(other.type),
-lastvalue(other.lastvalue),
-history(std::move(other.history)) {
+Sensor::Sensor(Sensor &&other) noexcept : id(other.id),
+                                          type(other.type),
+                                          lastvalue(other.lastvalue),
+                                          history(std::move(other.history)) {
     other.id = 0;
     other.lastvalue = 0;
 }
 
-Sensor& Sensor::operator=(const Sensor& other) {
+Sensor &Sensor::operator=(const Sensor &other) {
     if (this != &other) {
         id = other.id;
         type = other.type;
@@ -58,6 +57,12 @@ void Sensor::decrement_count_sensors() {
 
 const std::vector<Measurement> &Sensor::get_history() const{
     return history;
+}
+
+void Sensor::addMeasurement(double value, std::string &date) {
+    Measurement m(value, id, type);
+    m.setData(date);
+    history.push_back(m);
 }
 
 int Sensor::get_id() const {

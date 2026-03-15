@@ -10,24 +10,28 @@ protected:
     std::string type;
     double lastvalue;
     std::vector<Measurement> history;
-    static int sensor_count;
 
 public:
-    Sensor();
+    static int sensor_count;
 
-    //Sensor(int id);
+    Sensor();
+    Sensor(int id, std::string type);
 
     Sensor(int id, std::string type, double lastvalue);
 
-    Sensor(const Sensor& other);
-    Sensor(Sensor&& other) noexcept;
-    Sensor& operator=(const Sensor& other);
+    Sensor(const Sensor &other);
+
+    Sensor(Sensor &&other) noexcept;
+
+    Sensor &operator=(const Sensor &other);
 
     virtual ~Sensor();
 
-    virtual double read_value()=0;
+    virtual double read_value(std::string & date) =0;
 
     static void decrement_count_sensors();
+
+    void addMeasurement(double value, std::string &date);
 
     int get_id() const;
 
@@ -35,7 +39,7 @@ public:
 
     double get_lastvalue() const;
 
-    const std::vector<Measurement>& get_history() const;
+    const std::vector<Measurement> &get_history() const;
 
     static int get_sensor_count();
 

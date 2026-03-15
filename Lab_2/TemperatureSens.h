@@ -4,13 +4,16 @@
 
 #ifndef UNTITLED_TEMPERATURESENS_H
 #define UNTITLED_TEMPERATURESENS_H
+#include "EnvironmentalSensor.h"
 #include "Sensor.h"
 
 
-class TemperatureSens: public Sensor {
-    public:
+class TemperatureSens : public EnvironmentalSensor {
+public:
     TemperatureSens(int id);
-    double read_value() override;
+
+    double read_value(std::string &date) override;
+
     double convertCtoF() const;
 };
 

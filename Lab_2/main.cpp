@@ -12,6 +12,7 @@ int main() {
 
     int choice;
 
+
     do {
         ///////MENU///////
         std::cout << termcolor::magenta << "\n ***Mayka's weather station Menu***\n" << termcolor::reset;
@@ -22,7 +23,8 @@ int main() {
         std::cout << "5. Show History\n";
         std::cout << "6. Calculate Average by Type\n";
         std::cout << "7. Delete last Sensor\n";
-        std::cout << "8. Exit\n";
+        std::cout << "8. Delete specific sensor\n";
+        std::cout << "9. Exit\n";
         //////////////////
         std::cout << termcolor::bright_cyan << "Choose an option: " << termcolor::reset;
         std::cin >> choice;
@@ -33,9 +35,18 @@ int main() {
                 std::string type;
                 std::cout << "Enter sensor ID: ";
                 std::cin >> id;
-                std::cout << "Enter sensor type: ";
+                std::cout << "Enter sensor type (Temperature/Humidity/Pressure): ";
                 std::cin >> type;
-                wstation.add_Sensor(id, type);
+
+                if (type == "Temperature") {
+                    wstation.add_temperature_sensor(id);
+                } else if (type == "Humidity") {
+                    wstation.add_humidity_sensor(id);
+                } else if (type == "Pressure") {
+                    wstation.add_pressure_sensor(id);
+                } else {
+                    std::cout << termcolor::bright_red << "Unknown sensor type: " << termcolor::reset << type << "\n";
+                }
                 break;
             }
             case 2: {
@@ -48,7 +59,13 @@ int main() {
                 break;
             }
             case 4: {
-                wstation.collect_data();
+                std::string current_date;
+
+                std::cout << termcolor::bright_green << "Enter current date for measurements --> " << termcolor::reset;
+                std::cin >> current_date;
+
+                wstation.collect_data(current_date);
+
                 std::cout << "Data collected!\n";
                 break;
             }
@@ -69,7 +86,13 @@ int main() {
                 std::cout << termcolor::bright_green << "Sensor was deleted!1" << termcolor::reset;
                 break;
             }
+            case 8: {
+                int temp_id;
+                std::cout << "Enter sensor id: ";
+                std::cin >> temp_id;
+                wstation - (temp_id);
+            }
         }
-    } while (choice != 8);
+    } while (choice != 9);
     return 0;
 }

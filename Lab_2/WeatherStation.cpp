@@ -17,8 +17,9 @@ WeatherStation::WeatherStation(std::string name) : name(name) {
 WeatherStation::~WeatherStation() {
     for (auto s: sensors) {
         delete s;
-        std::cout << "WeatherStation destructor" << std::endl;
     }
+    sensors.clear();
+    std::cout << "WeatherStation destructor" << std::endl;
 };
 
 
@@ -34,14 +35,14 @@ void WeatherStation::add_pressure_sensor(int id) {
     sensors.push_back(new PressureSens(id));
 }
 
-void WeatherStation::collect_data() {
+void WeatherStation::collect_data(std::string &date) {
     for (auto sensor: sensors) {
-        sensor->read_value();
+        sensor->read_value(date);
     }
 };
 
 void WeatherStation::show_Sensors() const {
-    for (auto &sensor: sensors) {
+    for (auto sensor: sensors) {
         std::cout << sensor->get_id() << ". " << sensor->get_type() << std::endl;
     }
 };
@@ -59,12 +60,12 @@ double WeatherStation::calculate_average(const std::string type) const {
     int count = 0;
 
     for (auto sensor: sensors) {
-            if (sensor->get_type() == type) {
-                for (auto measurement: sensor->get_history()) {
-                    sum += measurement.getValue();
-                    count++;
-                }
+        if (sensor->get_type() == type) {
+            for (auto measurement: sensor->get_history()) {
+                sum += measurement.getValue();
+                count++;
             }
+        }
 
     }
 
@@ -82,6 +83,7 @@ void WeatherStation::show_sensor_count() const {
 
 void WeatherStation::operator--() {
     if (!sensors.empty()) {
+        delete sensors.back();
         sensors.pop_back();
         Sensor::decrement_count_sensors();
 
@@ -89,14 +91,19 @@ void WeatherStation::operator--() {
 }
 
 void WeatherStation::operator-(int temp_id) {
-    for (int i = 0; i < sensors.size(); i++) {
+    bool found = false;
+    for (size_t i = 0; i < sensors.size(); i++) {
         if (sensors[i]->get_id() == temp_id) {
+            std::cout << termcolor::bright_green << "Sensor " << sensors[i]->get_type() << " was removed." <<
+                termcolor::reset << std::endl;
+            delete sensors[i];
             sensors.erase(sensors.begin() + i);
-            std::cout << termcolor::bright_green << "Sensor " << sensors[i]->get_type() << " was removed." << termcolor::reset << std::endl;
+            Sensor::decrement_count_sensors();
+            found = true;
+            break;
         }
-        else {
-            std::cout<<termcolor::bright_red <<"Error! You dont have this sensor."<<termcolor::reset << std::endl;
+        if (!found) {
+            std::cout << termcolor::bright_red << "Error! You dont have this sensor." << termcolor::reset << std::endl;
         }
     }
-
 }

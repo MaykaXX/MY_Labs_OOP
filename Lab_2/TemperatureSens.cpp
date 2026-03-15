@@ -5,18 +5,18 @@
 #include "TemperatureSens.h"
 
 
-TemperatureSens::TemperatureSens(int id){
+TemperatureSens::TemperatureSens(int id) {
     this->id = id;
     type = "Temperature";
-    lastvalue = 0;
+    unit = "C";
 }
 
-double TemperatureSens::read_value() {
+double TemperatureSens::read_value(std::string &date) {
     lastvalue = rand() % 50;
-    history.emplace_back(lastvalue, id, type);
+    addMeasurement(lastvalue, date);
     return lastvalue;
 }
 
 double TemperatureSens::convertCtoF() const {
-    return lastvalue * 9.0/5.0+32;
+    return lastvalue * 9.0 / 5.0 + 32;
 }

@@ -17,11 +17,11 @@ public:
 
     Measurement(std::string data, double value, int sensor_id, std::string);
 
-    Measurement(const Measurement &other);
+    //Measurement(const Measurement &other);
 
-    Measurement(Measurement &&other) noexcept;
+    //Measurement(Measurement &&other) noexcept;
 
-    Measurement& operator=(const Measurement &other);
+    //Measurement &operator=(const Measurement &other);
 
     ~Measurement();
 
@@ -35,6 +35,8 @@ public:
     int getSensorId() const;
 
     std::string getTypeSensor() const;
+
+    void setData(std::string data);
 };
 
 
