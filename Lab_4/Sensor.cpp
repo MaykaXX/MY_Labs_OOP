@@ -21,7 +21,7 @@ Sensor::Sensor(int id, std::string type) : Sensor(id, type, 0.0) {
 
 Sensor::Sensor(int id, std::string type, double lastvalue) : id(id), type(type), lastvalue(lastvalue) {
     sensor_count++;
-    std::cout << "Sensor created (int id, std::string type, double lastvalue) "<< std::endl;
+    std::cout << "Sensor created (int id, std::string type, double lastvalue) " << std::endl;
 };
 
 Sensor::Sensor(const Sensor &other) : id(other.id),

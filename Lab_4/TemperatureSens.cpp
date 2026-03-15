@@ -5,7 +5,7 @@ TemperatureSens::TemperatureSens(int id) {
     this->id = id;
     type = "Temperature";
     unit = "C";
-    std:: cout << "TemperatureSens was called" << std::endl;
+    std::cout << "TemperatureSens was called" << std::endl;
 }
 
 double TemperatureSens::read_value(std::string &date) {
