@@ -15,6 +15,7 @@ public:
     static int sensor_count;
 
     Sensor();
+
     Sensor(int id, std::string type);
 
     Sensor(int id, std::string type, double lastvalue);
@@ -27,7 +28,7 @@ public:
 
     virtual ~Sensor();
 
-    virtual double read_value(std::string & date) =0;
+    virtual double read_value(std::string &date) =0;
 
     static void decrement_count_sensors();
 

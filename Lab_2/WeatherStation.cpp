@@ -9,9 +9,11 @@
 #include "../termcolor/termcolor.hpp"
 
 WeatherStation::WeatherStation() : WeatherStation("Default station") {
+    std::cout << "Default WeatherStation" << std::endl;
 };
 
 WeatherStation::WeatherStation(std::string name) : name(name) {
+    std::cout << "WeatherStation (std::string name)" << name << std::endl;
 };
 
 WeatherStation::~WeatherStation() {
@@ -66,7 +68,6 @@ double WeatherStation::calculate_average(const std::string type) const {
                 count++;
             }
         }
-
     }
 
     if (count == 0) {
@@ -95,7 +96,7 @@ void WeatherStation::operator-(int temp_id) {
     for (size_t i = 0; i < sensors.size(); i++) {
         if (sensors[i]->get_id() == temp_id) {
             std::cout << termcolor::bright_green << "Sensor " << sensors[i]->get_type() << " was removed." <<
-                termcolor::reset << std::endl;
+                    termcolor::reset << std::endl;
             delete sensors[i];
             sensors.erase(sensors.begin() + i);
             Sensor::decrement_count_sensors();

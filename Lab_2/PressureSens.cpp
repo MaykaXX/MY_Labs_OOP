@@ -4,10 +4,14 @@
 
 #include "PressureSens.h"
 
+#include <iostream>
+#include <ostream>
+
 PressureSens::PressureSens(int id) {
     this->id = id;
     type = "Pressure";
     unit = "hPa";
+    std::cout << "PressureSens was called" << std::endl;
 }
 
 double PressureSens::read_value(std::string &date) {

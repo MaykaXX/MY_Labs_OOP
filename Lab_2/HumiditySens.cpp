@@ -4,10 +4,14 @@
 
 #include "HumiditySens.h"
 
+#include <iostream>
+#include <ostream>
+
 HumiditySens::HumiditySens(int id) {
     this->id = id;
     type = "Humidity";
     unit = "%";
+    std::cout << "HumiditySens was called" << std::endl;
 }
 
 double HumiditySens::read_value(std::string &date) {

@@ -1,6 +1,3 @@
-//
-// Created by hwang on 14.03.2026.
-//
 
 #ifndef UNTITLED_TEMPERATURESENS_H
 #define UNTITLED_TEMPERATURESENS_H

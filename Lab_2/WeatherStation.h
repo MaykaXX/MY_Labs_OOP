@@ -23,6 +23,7 @@ public:
     void add_pressure_sensor(int id);
 
     void collect_data(std::string &date);
+
     void show_Sensors() const;
     void show_history() const;
     double calculate_average(const std::string type) const;

@@ -1,14 +1,11 @@
-//
-// Created by hwang on 14.03.2026.
-//
-
 #include "TemperatureSens.h"
-
+#include <iostream>
 
 TemperatureSens::TemperatureSens(int id) {
     this->id = id;
     type = "Temperature";
     unit = "C";
+    std:: cout << "TemperatureSens was called" << std::endl;
 }
 
 double TemperatureSens::read_value(std::string &date) {
