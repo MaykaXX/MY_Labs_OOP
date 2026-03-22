@@ -4,7 +4,7 @@
 #include "Roles.h"
 
 
-class TemperatureWorker final: public Roles {
+class TemperatureWorker final : public Roles {
 public:
     void describe() const override;
 

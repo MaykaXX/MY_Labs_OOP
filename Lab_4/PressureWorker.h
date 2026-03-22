@@ -5,10 +5,12 @@
 #include "Roles.h"
 
 
-class PressureWorker final: public Roles{
-    public:
+class PressureWorker final : public Roles {
+public:
     void describe() const override;
+
     std::string get_sensorType() const override;
+
     ~PressureWorker();
 };
 

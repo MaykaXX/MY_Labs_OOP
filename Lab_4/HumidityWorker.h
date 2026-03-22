@@ -4,9 +4,11 @@
 
 
 class HumidityWorker final : public Roles {
-    public:
+public:
     void describe() const override;
+
     std::string get_sensorType() const override;
+
     ~HumidityWorker();
 };
 
