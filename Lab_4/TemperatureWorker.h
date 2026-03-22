@@ -4,13 +4,13 @@
 #include "Roles.h"
 
 
-class TemperatureWorker : public Roles {
+class TemperatureWorker final: public Roles {
 public:
     void describe() const override;
 
     std::string get_sensorType() const override;
 
-    ~ TemperatureWorker();
+    ~TemperatureWorker();
 };
 
 
