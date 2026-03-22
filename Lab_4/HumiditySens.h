@@ -7,7 +7,7 @@
 #include "EnvironmentalSensor.h"
 #include "Sensor.h"
 
-class HumiditySens : public EnvironmentalSensor {
+class HumiditySens final : public EnvironmentalSensor {
 public:
     HumiditySens(int id);
 

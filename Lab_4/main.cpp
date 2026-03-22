@@ -12,7 +12,6 @@ int main() {
 
     int choice;
 
-
     do {
         ///////MENU///////
         std::cout << termcolor::magenta << "\n ***Mayka's weather station Menu***\n" << termcolor::reset;
