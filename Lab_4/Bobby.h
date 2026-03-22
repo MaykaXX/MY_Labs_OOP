@@ -7,15 +7,16 @@
 class Bobby : public Human {
 private:
     std::string name;
-    Roles * role;
+    Roles *role;
+
 public:
-    Bobby(std::string name, Roles & role);
+    Bobby(std::string name, Roles &role);
 
     std::string get_name() const override;
 
     void introduce() const override;
 
-    void change_role(Roles & newrole);
+    void change_role(Roles &newrole);
 
 
     ~Bobby();

@@ -105,13 +105,13 @@ int main() {
                 std::cin >> temp_id;
                 wstation - (temp_id);
             }
-                case 9: {
-                Human* people[3] = {&bobby, &lyuda, &valestina};
-                for (auto p : people) {
+            case 9: {
+                Human *people[3] = {&bobby, &lyuda, &valestina};
+                for (auto p: people) {
                     p->introduce();
                 }
 
-                std::cout << termcolor::bright_green<<"\nBobby got promoted!"<<termcolor::reset << std::endl;
+                std::cout << termcolor::bright_green << "\nBobby got promoted!" << termcolor::reset << std::endl;
                 bobby.change_role(pw);
                 bobby.introduce();
                 break;
