@@ -1,5 +1,9 @@
 #include <iostream>
 #include "WeatherStation.h"
+#include "TemperatureWorker.h"
+#include "HumidityWorker.h"
+#include "PressureWorker.h"
+#include "Bobby.h"
 #include "../termcolor/termcolor.hpp"
 
 
@@ -9,6 +13,15 @@ int main() {
     WeatherStation wstation("Station A");
     WeatherStation wstation2(wstation);
     WeatherStation wstation3(std::move(wstation2));
+
+    TemperatureWorker tw;
+    HumidityWorker hw;
+    PressureWorker pw;
+
+    Bobby bobby("Bobby", tw);
+    Bobby lyuda("Lyuda", hw);
+    Bobby valestina("Valestina", pw);
+
 
     int choice;
 
@@ -23,7 +36,8 @@ int main() {
         std::cout << "6. Calculate Average by Type\n";
         std::cout << "7. Delete last Sensor\n";
         std::cout << "8. Delete specific sensor\n";
-        std::cout << "9. Exit\n";
+        std::cout << "9. Show workers\n";
+        std::cout << "10. Exit\n";
         //////////////////
         std::cout << termcolor::bright_cyan << "Choose an option: " << termcolor::reset;
         std::cin >> choice;
@@ -91,7 +105,18 @@ int main() {
                 std::cin >> temp_id;
                 wstation - (temp_id);
             }
+                case 9: {
+                Human* people[3] = {&bobby, &lyuda, &valestina};
+                for (auto p : people) {
+                    p->introduce();
+                }
+
+                std::cout << termcolor::bright_green<<"\nBobby got promoted!"<<termcolor::reset << std::endl;
+                bobby.change_role(pw);
+                bobby.introduce();
+                break;
+            }
         }
-    } while (choice != 9);
+    } while (choice != 10);
     return 0;
 }
