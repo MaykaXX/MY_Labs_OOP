@@ -12,7 +12,7 @@ public:
 
     virtual void introduce() const =0;
 
-    ~Human();
+    virtual ~Human();
 };
 
 
